@@ -37,7 +37,7 @@ var routeComponentRegex = /routes\/([^\/]+\/?[^\/]+).js$/;
 var config = {
 
     'entry': [
-        './src/app.jsx',
+        `${path.join(src, 'app.jsx')}`,
     ],
     'output': {
         path: './dist/',
@@ -54,6 +54,8 @@ var config = {
             '.js',
             '.jsx',
             '.json',
+            '.ts',
+            '.tsx',
         ]
     },
 
@@ -64,6 +66,10 @@ var config = {
 
     'module': {
         'loaders': [
+            {
+                test: /\.tsx?$/,
+                loader: "ts-loader"
+            },
             {
                 test: /\.(js|jsx|babel)$/,
                 exclude: /node_modules/,
@@ -110,8 +116,17 @@ var config = {
 
 
         ],
+
+        preLoaders: [
+            // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
+            {
+                test: /\.js$/,
+                loader: "source-map-loader"
+            }
+        ]
     },
     'postcss': [require('autoprefixer')],
+    'devtool': 'source-map',
     'devServer': {
         'historyApiFallback': false,
         'hot': false,

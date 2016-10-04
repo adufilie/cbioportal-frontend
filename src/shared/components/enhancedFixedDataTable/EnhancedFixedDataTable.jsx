@@ -504,9 +504,8 @@ var EnhancedFixedDataTable = (function () {
         displayName: "TableMainPart",
         // Creates Qtip
         createQtip: function () {
-            console.log("RESTORE qtip !!!!!!!")
-            return;
-
+            console.log("RESTORE qtip !!!!!!!");
+            /*
             $('.EFDT-table .hasQtip').one('mouseenter', function () {
                 $(this).qtip({
                     content: {text: $(this).attr('data-qtip')},
@@ -516,6 +515,7 @@ var EnhancedFixedDataTable = (function () {
                     position: {my: 'center left', at: 'center right', viewport: $(window)}
                 });
             });
+			*/
         },
 
         // Creates Qtip after first rendering
@@ -1020,8 +1020,7 @@ var EnhancedFixedDataTable = (function () {
         registerSliders: function () {
 
             console.log("RESTORE registerSliders !!!!!!");
-            return;
-
+            /*
             var onFilterRangeChange = this.onFilterRangeChange;
             $('.rangeSlider')
                 .each(function () {
@@ -1054,6 +1053,7 @@ var EnhancedFixedDataTable = (function () {
                         $("#range-" + column).text(min + " to " + max);
                     }
                 });
+            */
         },
         // Processes input data, and initializes table states
         getInitialState: function () {
