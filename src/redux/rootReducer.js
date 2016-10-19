@@ -4,10 +4,11 @@ import { combineReducers } from 'redux-immutable';
 import Immutable from 'immutable';
 import clinicalInformation from 'pages/patientView/clinicalInformation/duck';
 import customRoutingReducer from './customRouterReducer';
-
+import cancerStudyDatasets from 'pages/datasetView/duck';
 // Require your modules here
 const modules = {
     clinicalInformation,
+    cancerStudyDatasets
 };
 
 export const actions = {
