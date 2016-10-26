@@ -1,7 +1,7 @@
 import * as React from "react";
 import { actionCreators, mapStateToProps } from './duck';
 import { connect } from 'react-redux';
-import { Table, unsafe }  from 'reactable';
+import { Table }  from 'reactable';
 import * as _ from 'underscore';
 export class DataSetPageUnconnected extends React.Component {
 
@@ -20,9 +20,23 @@ export class DataSetPageUnconnected extends React.Component {
             this.props.datasets.forEach((item) => {
                 if(studies.indexOf(item.cancer_study_identifier) === -1){
                     studies.push(item.cancer_study_identifier);
-                    tempObj = {CancerStudy: unsafe("<a href='http://www.cbioportal.org/study?id=" + item.cancer_study_identifier + "#summary' target='_blank'>" + item.name + "</a>  <a href='https://github.com/cBioPortal/datahub/blob/master/public/" + item.cancer_study_identifier + ".tar.gz' download><i class='fa fa-download'></i></a>")};
+                    tempObj = {
+                        CancerStudy: <div>
+                            <a key='name' href={`http://www.cbioportal.org/study?id=${item.cancer_study_identifier}#summary`} target='_blank'>
+                                {item.name}
+                            </a>
+                            {' '}
+                            <a key='icon' href={`https://github.com/cBioPortal/datahub/blob/master/public/${item.cancer_study_identifier}.tar.gz`} download>
+                                <i className='fa fa-download'/>
+                            </a>
+                        </div>
+                    };
                     if(!_.isNull(item.citation)){
-                        tempObj.Reference = unsafe("<a target='_blank' href='https://www.ncbi.nlm.nih.gov/pubmed/" + item.pmid + "'>" + item.citation + "</a>");
+                        tempObj.Reference = (
+                            <a target='_blank' href={`https://www.ncbi.nlm.nih.gov/pubmed/${item.pmid}`}>
+                                {item.citation}
+                            </a>
+                        );
                     }
                     rows.push(tempObj);
                 }
