@@ -7,9 +7,9 @@ import { shallow, mount } from 'enzyme';
 import Immutable from 'immutable';
 import sinon from 'sinon';
 import { default as reducer, actionTypes, actionCreators} from './duck';
-import { DataSetPageUnconnected } from './DataSetPage';
+import { DataSetPage } from './DataSetPage';
 
-describe('DataSetPageUnconnected', () => {
+describe('DataSetPage', () => {
     let comp, props;
 
     before(() => {
@@ -20,7 +20,7 @@ describe('DataSetPageUnconnected', () => {
 
         };
 
-        comp = mount(<DataSetPageUnconnected {...props} />);
+        comp = mount(<DataSetPage {...props} />);
     });
 
     it('it load mock dataset info on mounting', () => {
