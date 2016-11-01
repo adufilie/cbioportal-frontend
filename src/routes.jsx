@@ -15,7 +15,7 @@ import Container from 'appShell/App/Container';
 // see article http://henleyedition.com/implicit-code-splitting-with-react-router-and-webpack/
 import PatientViewPage from 'bundle?lazy!babel!./pages/patientView/PatientViewPage';
 import HomePage from 'bundle?lazy!babel!./pages/home/HomePage';
-import DatasetViewPage from 'bundle?lazy!babel!./pages/datasetView/DatasetPage';
+import DatasetViewPage from 'bundle?lazy!babel!./pages/datasetView/DataSetPage';
 // accepts bundle-loader's deferred loader function and defers execution of route's render
 // until chunk is loaded
 function lazyLoadComponent(loader) {
