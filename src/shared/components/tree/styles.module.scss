@@ -1,0 +1,14 @@
+.indent {
+  width: 1em;
+}
+
+.arrow::after {
+  content: '▾';
+}
+
+.collapsed {
+  transform: rotate(-90deg);
+}
+
+.content {
+}

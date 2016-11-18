@@ -396,7 +396,7 @@ export default class CBioPortalAPI {
      * @param {string} sortBy - Name of the property that the result list is sorted by
      * @param {string} direction - Direction of the sort
      */
-    getAllCancerTypesUsingGET(parameters: {
+	getAllCancerTypesUsingGET(parameters: {
             'projection' ? : "ID" | "SUMMARY" | "DETAILED" | "META",
             'pageSize' ? : number,
             'pageNumber' ? : number,
