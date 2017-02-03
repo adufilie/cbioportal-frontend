@@ -25,7 +25,6 @@ interface IHomePageProps
 
 interface IHomePageState
 {
-	selectorVersion: 'old'|'new';
 }
 
 @observer
@@ -34,7 +33,6 @@ export default class HomePage extends React.Component<IHomePageProps, IHomePageS
     constructor(props:IHomePageProps)
     {
         super(props);
-        this.state = {selectorVersion: 'new'};
     }
 
     componentDidMount()
@@ -47,12 +45,14 @@ export default class HomePage extends React.Component<IHomePageProps, IHomePageS
 		getRootElement().className = getRootElement().className.split(styles.rootHtml).join('');
 	}
 
+	@observable selectorVersion:'new'|'old' = 'new';
+
     public render()
     {
         return (
         	<FlexCol style={{height: '100%'}}>
-				{this.state.selectorVersion == 'new' ? <QueryContainer/> : <QueryContainerOld/>}
-				{devMode.enabled && <a style={{alignSelf: 'center'}} onClick={() => this.setState({ selectorVersion: this.state.selectorVersion == 'new' ? 'old' : 'new' })}>Switch to {this.state.selectorVersion == 'new' ? 'old' : 'new'} view</a>}
+				{this.selectorVersion == 'new' ? <QueryContainer/> : <QueryContainerOld/>}
+				{devMode.enabled && <a style={{alignSelf: 'center'}} onClick={() => this.selectorVersion = this.selectorVersion == 'new' ? 'old' : 'new' })}>Switch to {this.selectorVersion == 'new' ? 'old' : 'new'} view</a>}
 				{devMode.enabled && <DevTools/>}
 			</FlexCol>
 		);
