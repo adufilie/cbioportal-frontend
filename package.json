@@ -97,6 +97,7 @@
     "react-clipboard.js": "^1.0.1",
     "react-bootstrap-table": "^2.6.0",
     "react-dom": "^15.4.2",
+    "react-draggable": "^2.2.3",
     "react-file-download": "^0.3.2",
     "react-fontawesome": "^1.5.0",
     "react-if": "^2.1.0",
