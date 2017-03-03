@@ -4,6 +4,7 @@ declare module '*.json';
 
 // these packages are missing typings
 declare module 'rc-tooltip';
+declare module 'react-draggable';
 declare module 'react-file-download';
 declare module 'react-select';
 declare module 'react-zeroclipboard';
