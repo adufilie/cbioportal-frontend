@@ -6,7 +6,6 @@ declare module '*.json';
 declare module 'rc-tooltip';
 declare module 'react-draggable';
 declare module 'react-file-download';
-declare module 'react-select';
 declare module 'react-zeroclipboard';
 declare module 'reactableMSK';
 declare module 'redux-seamless-immutable';
