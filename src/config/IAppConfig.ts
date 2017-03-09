@@ -1,5 +1,6 @@
 export interface IAppConfig {
     host: string;
+    genomespaceEnabled: boolean;
     cancerStudySearchPresets: string[];
     priorityStudies: PriorityStudies;
 }
