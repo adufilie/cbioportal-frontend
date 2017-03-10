@@ -1,8 +1,8 @@
 import AppConfig from "appConfig";
 import {QueryStore} from "../components/query/QueryStore";
-import buildUrl from 'build-url';
+import {default as buildUrl, QueryParams} from 'build-url';
 
-function url(path:string, queryParams?:{[key:string]: undefined | string | ReadonlyArray<string>}, hash?:string) {
+function url(path:string, queryParams?:QueryParams, hash?:string) {
     return buildUrl(`//${AppConfig.host}`, {path, queryParams, hash});
 }
 
@@ -15,22 +15,23 @@ export function getStudyViewUrl(studyId:string) {
 export function getStudySummaryUrl(studyId:string) {
     return url('study', {id: studyId}, 'summary');
 }
-export function getSubmitQueryUrl(store:QueryStore)
-{
-    return url('index.do', {
-        cancer_study_list: store.selectedStudyIds,
-        cancer_study_id: store.singleSelectedStudyId,
-        genetic_profile_ids_PROFILE_MUTATION_EXTENDED: '',
-        data_priority: store.dataTypePriorityCode + '',
-        case_set_id: store.selectedSampleListId,
-        case_ids: store.caseIds,
-        patient_case_select: store.caseIdsMode,
-        gene_set_choice: 'user-defined-list',
-        gene_list: store.geneQuery,
-        clinical_param_selection: '',
-        tab_index: store.forDownloadTab ? 'tab_download' : 'tab_visualize',
-        Action: 'Submit',
-    });
+
+type SubmitQueryUrlParams = {
+    cancer_study_list: ReadonlyArray<string>,
+    cancer_study_id: string,
+    genetic_profile_ids_PROFILE_MUTATION_EXTENDED: '',
+    data_priority: '0'|'1'|'2',
+    case_set_id: string,
+    case_ids: string,
+    patient_case_select: 'sample' | 'patient',
+    gene_set_choice: 'user-defined-list',
+    gene_list: string,
+    clinical_param_selection: '',
+    tab_index: 'tab_download' | 'tab_visualize',
+    Action: 'Submit',
+};
+export function getSubmitQueryUrl(params:SubmitQueryUrlParams) {
+    return url('index.do', params);
 }
 
 export function getPubMedUrl(pmid:string) {
