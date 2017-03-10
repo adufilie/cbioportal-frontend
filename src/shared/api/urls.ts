@@ -30,8 +30,8 @@ type SubmitQueryUrlParams = {
     tab_index: 'tab_download' | 'tab_visualize',
     Action: 'Submit',
 };
-export function getSubmitQueryUrl(params:SubmitQueryUrlParams) {
-    return url('index.do', params);
+export function getSubmitQueryUrl(path:'index.do' | 'crosscancer.do', params:SubmitQueryUrlParams) {
+    return url(path, params);
 }
 
 export function getPubMedUrl(pmid:string) {
