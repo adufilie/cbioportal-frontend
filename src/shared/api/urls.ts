@@ -1,5 +1,4 @@
 import AppConfig from "appConfig";
-import {QueryStore} from "../components/query/QueryStore";
 import {default as buildUrl, QueryParams} from 'build-url';
 
 function url(path:string, queryParams?:QueryParams, hash?:string) {
@@ -19,7 +18,13 @@ export function getStudySummaryUrl(studyId:string) {
 type SubmitQueryUrlParams = {
     cancer_study_list: ReadonlyArray<string>,
     cancer_study_id: string,
-    genetic_profile_ids_PROFILE_MUTATION_EXTENDED: '',
+    genetic_profile_ids_PROFILE_MUTATION_EXTENDED: string,
+    genetic_profile_ids_PROFILE_COPY_NUMBER_ALTERATION: string,
+    genetic_profile_ids_PROFILE_MRNA_EXPRESSION: string,
+    genetic_profile_ids_PROFILE_METHYLATION: string,
+    genetic_profile_ids_PROFILE_PROTEIN_EXPRESSION: string,
+    Z_SCORE_THRESHOLD: string,
+	RPPA_SCORE_THRESHOLD: string,
     data_priority: '0'|'1'|'2',
     case_set_id: string,
     case_ids: string,
@@ -30,8 +35,19 @@ type SubmitQueryUrlParams = {
     tab_index: 'tab_download' | 'tab_visualize',
     Action: 'Submit',
 };
-export function getSubmitQueryUrl(path:'index.do' | 'crosscancer.do', params:SubmitQueryUrlParams) {
-    return url(path, params);
+export function getSubmitQueryUrl(params:SubmitQueryUrlParams) {
+    if (params.cancer_study_list.length > 1)
+        return url(
+            'crosscancer.do',
+            {
+                cancer_study_list: '',
+                cancer_study_id: 'all',
+                ...params
+            },
+            `crosscancer/overview/${params.data_priority}/${encodeURIComponent(params.gene_list)}/${encodeURIComponent(params.cancer_study_list.join(','))}`
+        );
+
+    return url('index.do', params);
 }
 
 export function getPubMedUrl(pmid:string) {
