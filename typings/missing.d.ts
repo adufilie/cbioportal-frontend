@@ -15,4 +15,4 @@ declare module 'react-collapse';
 declare module 'webpack-raphael';
 declare module 'natural-sort';
 declare module 'mobx-react-router';
-
+declare module 'recompose/withContext';
