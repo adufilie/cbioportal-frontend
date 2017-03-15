@@ -2,7 +2,7 @@ import AppConfig from "appConfig";
 import {default as buildUrl, QueryParams} from 'build-url';
 
 function url(path:string, queryParams?:QueryParams, hash?:string) {
-    return buildUrl(`//${AppConfig.host}`, {path, queryParams, hash});
+    return buildUrl(`${window.location.protocol}//${AppConfig.host}`, {path, queryParams, hash});
 }
 
 export function getCbioPortalApiUrl() {
