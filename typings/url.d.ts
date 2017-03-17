@@ -1,6 +1,6 @@
 declare module 'url'
 {
-	export type QueryParams = {[key:string]: undefined | string | ReadonlyArray<string>};
+	export type QueryParams = { [key:string]: undefined | null | string | string[] };
 
 	export interface URLParts
 	{
