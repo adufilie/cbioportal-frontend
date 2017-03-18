@@ -2,13 +2,14 @@ import * as React from 'react';
 import DefaultTooltip from 'shared/components/DefaultTooltip';
 import 'rc-tooltip/assets/bootstrap_white.css';
 import {VAFPlot, IVAFPlotProps} from './VAFPlot';
+import Tooltip from "rc-tooltip";
 
 export type IThumbnailExpandVAFPlotProps = {
     data: { [s: string]:number[] };
     order?: { [s:string]:number };
     colors?: { [s: string]:string };
     labels?: { [s:string]:string };
-    overlayPlacement?: string;
+    overlayPlacement?: Tooltip.Placement;
     cssClass?: string;
 };
 
