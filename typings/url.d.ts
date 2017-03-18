@@ -21,7 +21,7 @@ declare module 'url'
 	export function parse(urlStr:string, parseQueryString:true, slashesDenoteHost?:boolean):URLParts & {query: QueryParams, search: string};
 	export function parse(urlStr:string, parseQueryString?:false, slashesDenoteHost?:boolean):URLParts & {query: string | null};
 
-	export function format(urlObj:Partial<URLParts> & {query?: QueryParams}):string;
+	export function format(urlObj:Partial<URLParts & {query: QueryParams}>):string;
 
 	export function resolve(from:string, to:string):string;
 }
